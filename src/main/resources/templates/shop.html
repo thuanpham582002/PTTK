@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head th:replace="~{fragments.html::head}">
+</head>
+<body>
+    <div th:replace="~{fragments.html :: topbar}"></div>
+    <div th:replace="~{fragments.html :: navbar}"></div>
+    <div th:replace="~{fragments.html :: pageHeader}"></div>
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <!-- Shop Sidebar Start -->
+            <div class="col-lg-3 col-md-12">
+                <!-- Price Start -->
+                <div class="border-bottom mb-4 pb-4">
+                    <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
+                </div>
+                <!-- Price End -->
+                
+                <!-- Color Start -->
+                <div class="border-bottom mb-4 pb-4">
+                    <h5 class="font-weight-semi-bold mb-4">Filter by color</h5>
+                </div>
+                <!-- Color End -->
+
+                <!-- Size Start -->
+                <div class="mb-5">
+                    <h5 class="font-weight-semi-bold mb-4">Filter by size</h5>  
+                </div>
+                <!-- Size End -->
+            </div>
+            <!-- Shop Sidebar End -->
+
+
+            <!-- Shop Product Start -->
+            <div class="col-lg-9 col-md-12">
+                <div th:if="${bookList != null}">
+                    <span><hr/><h3>Book</h3></span>
+                    <div class="row pb-3">
+                        <th:block th:each="book : ${bookList}">
+                            <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                                <div class="card product-item border-0 mb-4">
+                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                        <img class="img-fluid w-100" th:src="${book.url}" alt="">
+                                    </div>
+                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                        <h6 class="text-truncate mb-3" th:text="${book.title}"></h6>
+                                        <div class="d-flex justify-content-center">
+                                            <h6 th:text="${'$' + book.price}"></h6><h6 class="text-muted ml-2"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between bg-light border">
+                                        <a th:href="@{'/shop/detail/' + ${book.id}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                        <button th:onclick="'addToCart(' + ${book.id} + ',1)'" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+                
+                <div th:if="${clothesList != null}" >
+                    <span><hr/><h3>Clothes</h3></span>
+                    <div class="row pb-3">
+                        <th:block th:each="clothes : ${clothesList}">
+                            <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                                <div class="card product-item border-0 mb-4">
+                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                        <img class="img-fluid w-100" th:src="${clothes.url}" alt="">
+                                    </div>
+                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                        <h6 class="text-truncate mb-3" th:text="${clothes.name}"></h6>
+                                        <div class="d-flex justify-content-center">
+                                            <h6 th:text="${'$' + clothes.price}"></h6><h6 class="text-muted ml-2"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between bg-light border">
+                                        <a th:href="@{'/shop/detail/' + ${clothes.id}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                        <button th:onclick="'addToCart(' + ${clothes.id} + ',1)'" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+
+                <div  th:if="${electronicList != null}">
+                    <span><hr/><h3>Electronic</h3></span>
+                    <div class="row pb-3">
+                        <th:block th:each="electronic : ${electronicList}">
+                            <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                                <div class="card product-item border-0 mb-4">
+                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                        <img class="img-fluid w-100" th:src="${electronic.url}" alt="">
+                                    </div>
+                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                        <h6 class="text-truncate mb-3" th:text="${electronic.name}"></h6>
+                                        <div class="d-flex justify-content-center">
+                                            <h6 th:text="${'$' + electronic.price}"></h6><h6 class="text-muted ml-2"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between bg-light border">
+                                        <a th:href="@{'/shop/detail/' + ${electronic.id}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                        <button th:onclick="'addToCart(' + ${electronic.id} + ',1)'" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+
+                <div  th:if="${shoesList != null}">
+                    <span><hr/><h3>Shoes</h3></span>
+                    <div class="row pb-3">
+                        <th:block th:each="shoes : ${shoesList}">
+                            <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
+                                <div class="card product-item border-0 mb-4">
+                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                        <img class="img-fluid w-100" th:src="${shoes.url}" alt="">
+                                    </div>
+                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                        <h6 class="text-truncate mb-3" th:text="${shoes.name}"></h6>
+                                        <div class="d-flex justify-content-center">
+                                            <h6 th:text="${'$' + shoes.price}"></h6><h6 class="text-muted ml-2"></h6>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between bg-light border">
+                                        <a th:href="@{'/shop/detail/' + ${shoes.id}}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                        <button th:onclick="'addToCart(' + ${shoes.id} + ',1)'" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+            <!-- Shop Product End -->
+        </div>
+    </div>
+    <!-- Shop End -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
+    <script src="/js/myApp.js"></script>
+</body>
+</html>

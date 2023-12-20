@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="~{fragments.html::head}"> </head>
+  <body>
+    <div th:replace="~{fragments.html :: topbar}"></div>
+    <div th:replace="~{fragments.html :: navbar}"></div>
+    <div th:replace="~{fragments.html :: pageHeader}"></div>
+
+    <!-- Checkout Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-8">
+                <div class="mb-4">
+                    <h4 class="font-weight-semi-bold mb-4">Thông tin nhận hàng</h4>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Tên người nhận</label>
+                            <span style="color:red"><i>*</i></span>
+                            <input class="form-control" type="text" placeholder="Nguyen Van A" id="receiverName">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Số điện thoại</label><span style="color:red"><i>*</i></span>
+                            <input class="form-control" type="text" placeholder="0123123123" id="receiverMobile">
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <label>Địa chỉ nhận hàng</label><span style="color:red"><i>*</i></span>
+                            <input class="form-control" type="text" placeholder="So 10 - ngo 5 - Ao Sen" id="receiverAddress">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Order Total</h4>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="font-weight-medium mb-3">Products</h5>
+                        <div class="d-flex justify-content-between" th:each="cartItem : ${cart.cartItemList}">
+                            <p th:text="${cartItem.product.name + ' x' + cartItem.quantity}"></p>
+                            <p th:text="${'$' + (cartItem.product.price * cartItem.quantity) }"></p>
+                        </div>
+                        <hr class="mt-0">
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Subtotal</h6>
+                            <h6 class="font-weight-medium" th:text="${'$' + (cart.totalPrice)}"></h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Shipping</h6>
+                            <h6 class="font-weight-medium">$10</h6>
+                        </div>
+                    </div>
+                    <div class="card-footer border-secondary bg-transparent">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5 class="font-weight-bold">Total</h5>
+                            <h5 class="font-weight-bold" th:text="${'$' + (cart.totalPrice + 10)}"></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Payment</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="paymentType" value="1" id="credit" checked>
+                                <label class="custom-control-label" for="credit">Thanh toán bằng thẻ (Credit)</label>
+                            </div>
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label>Số thẻ</label><span style="color:red"><i>*</i></span>
+                                        <input class="form-control" type="text"  id="creditId">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="paymentType" value="2" id="cash">
+                                <label class="custom-control-label" for="cash">Thanh toán khi nhận hàng (Cash)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer border-secondary bg-transparent">
+                        <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3" onclick="placeOrder()">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Checkout End -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
+    <script src="/js/myApp.js"></script>
+  </body>
+</html>

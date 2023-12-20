@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="~{fragments.html::head}"> </head>
+  <body>
+    <div th:replace="~{fragments.html :: topbar}"></div>
+    <div th:replace="~{fragments.html :: navbar}"></div>
+    <div th:replace="~{fragments.html :: pageHeader}"></div>
+
+    <!-- Shop Detail Start -->
+    <div class="container-fluid py-5">
+      <div class="row px-xl-5">
+        <div class="col-lg-5 pb-5">
+          <div
+            id="product-carousel"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <div class="carousel-inner border">
+              <div class="carousel-item active">
+                <img class="w-100 h-100" th:src="${product.url}" alt="Image" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7 pb-5">
+          <h3 class="font-weight-semi-bold" th:text="${product.name}"></h3>
+          <h3
+            class="font-weight-semi-bold mb-4"
+            th:text="${'$' + product.price}"
+          ></h3>
+          <p class="mb-4" th:text="${product.description}"></p>
+          <div class="d-flex align-items-center mb-4 pt-2">
+            <div class="input-group quantity mr-3" style="width: 130px">
+              <div class="input-group-btn">
+                <button class="btn btn-primary btn-minus">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <input
+                type="text"
+                class="form-control bg-secondary text-center"
+                value="1"
+                id="quantity"
+              />
+              <div class="input-group-btn">
+                <button class="btn btn-primary btn-plus">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </div>
+            </div>
+            <button class="btn btn-primary px-3" th:onclick="'addToCart(' + ${product.id} + ')'">
+              <i class="fa fa-shopping-cart mr-1"></i> Add To Cart
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row px-xl-5">
+        <div class="col">
+          <div
+            class="nav nav-tabs justify-content-center border-secondary mb-4"
+          >
+            <a
+              class="nav-item nav-link active"
+              data-toggle="tab"
+              href="#tab-pane-1"
+              >Information</a
+            >
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="tab-pane-1">
+                <h4 class="mb-3">Additional Information</h4>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item px-0" th:each="entry : ${addtionalInformation}" th:text="${entry.key + ': ' + entry.value}">
+                            </li>
+                          </ul> 
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Shop Detail End -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
+    <script src="/js/myApp.js"></script>
+  </body>
+</html>

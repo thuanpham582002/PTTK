@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments.html::head}">
+</head>
+<body>
+<div th:replace="~{fragments.html :: topbar}"></div>
+<div th:replace="~{fragments.html :: navbar}"></div>
+
+<!-- Featured Start -->
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 pb-3">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 col-md-12 col-sm-12 pb-1">
+            <form action="/register" method="post">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="nation">Nation:</label>
+                    <input type="text" id="nation" name="nation" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="district">District:</label>
+                    <input type="text" id="district" name="district" required>
+                </div>
+                <div class="form-group">
+                    <label for="street">street:</label>
+                    <input type="text" id="street" name="street" required>
+                </div>
+                <div class="form-group">
+                    <label for="numberHouse">numberHouse:</label>
+                    <input type="number" id="numberHouse" name="numberHouse" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstName">firstName:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="middleName">middleName:</label>
+                    <input type="text" id="middleName" name="middleName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">lastName:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+<!-- Featured End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="/lib/easing/easing.min.js"></script>
+<script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+
+<!-- Contact Javascript File -->
+<script src="/mail/jqBootstrapValidation.min.js"></script>
+<script src="/mail/contact.js"></script>
+
+<!-- Template Javascript -->
+<script src="/js/main.js"></script>
+</body>
+</html>

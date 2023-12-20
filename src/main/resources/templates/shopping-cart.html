@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:replace="~{fragments.html::head}"> </head>
+  <body>
+    <div th:replace="~{fragments.html :: topbar}"></div>
+    <div th:replace="~{fragments.html :: navbar}"></div>
+    <div th:replace="~{fragments.html :: pageHeader}"></div>
+
+    <!-- Cart Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-8 table-responsive mb-5">
+
+                <div th:if="${cart.sizeCart == 0}">
+                    <h2>Bạn chưa thêm sản phẩm nào vào giỏ hàng</h2>
+                </div>
+
+                <table class="table table-bordered text-center mb-0" th:if="${cart.sizeCart != 0}">
+                    <thead class="bg-secondary text-dark">
+                        <tr>
+                            <th>Products</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        <tr th:each="cartItem : ${cart.cartItemList}" th:id="'cart-item-'+${cartItem.id}">
+                            <td class="align-middle">
+                                <img th:src="${cartItem.product.url}" alt="" style="width: 50px;">
+                                <span th:text="${cartItem.product.name}"></span>
+                            </td>
+                            <td class="align-middle" th:text="${'$'+cartItem.product.price}"></td>
+                            <td class="align-middle">
+                                <div class="input-group quantity mx-auto" style="width: 100px;">
+                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" th:value="${cartItem.quantity}" th:onchange="'updateCart(' + ${cartItem.id} + ')'">
+                                </div>
+                            </td>
+                            <td class="align-middle" th:text="${'$' + cartItem.quantity * cartItem.product.price} "></td>
+                            <td class="align-middle"><button class="btn btn-sm btn-primary" th:onclick="'deleteCartItem(' + ${cartItem.id} + ')'"><i class="fa fa-times"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3 pt-1">
+                            <h6 class="font-weight-medium">Subtotal</h6>
+                            <h6 class="font-weight-medium" th:text="${'$' + cart.totalPrice} "></h6>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Shipping</h6>
+                            <h6 class="font-weight-medium">$10</h6>
+                        </div>
+                    </div>
+                    <div class="card-footer border-secondary bg-transparent">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5 class="font-weight-bold">Total</h5>
+                            <h5 class="font-weight-bold" th:text="${'$' + (cart.totalPrice + 10)}"></h5>
+                        </div>
+                        <a th:href="@{/checkout}" class="btn btn-block btn-primary my-3 py-3 di" th:classappend="${cart.totalPrice != 0} ? '' : 'd-none'">Proceed To Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Cart End -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="/lib/easing/easing.min.js"></script>
+    <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="/mail/jqBootstrapValidation.min.js"></script>
+    <script src="/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
+    <script src="/js/myApp.js"></script>
+  </body>
+</html>
