@@ -15,13 +15,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("SELECT p FROM Product p WHERE TYPE(p) = Book")
     List<Product> findAllBookProduct();
 
-    @Query("SELECT p FROM Product p WHERE TYPE(p) IN (Mobile, Computer)")
-    List<Product> findAllElectronicProduct();
+    @Query("SELECT p FROM Product p WHERE TYPE(p) IN (MobilePhone)")
+    List<Product> findAllMobilePhoneProduct();
 
     @Query("SELECT p FROM Product p WHERE TYPE(p) = Clothes")
     List<Product> findAllClothesProduct();
-
-    @Query("SELECT p FROM Product p WHERE TYPE(p) IN (ForMan, ForWoman)")
-    List<Product> findAllShoesProduct();
-
 }

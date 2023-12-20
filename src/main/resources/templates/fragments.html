@@ -74,75 +74,67 @@
                 <div class="navbar-nav w-100 overflow-hidden">
                     <a th:href="@{/shop/bookList}" class="nav-item nav-link">Book</a>
                     <a th:href="@{/shop/clothesList}" class="nav-item nav-link">Clothes</a>
-                    <a th:href="@{/shop/shoesList}" class="nav-item nav-link">Shoes</a>
-                    <a th:href="@{/shop/electronicList}" class="nav-item nav-link">Electronic</a>
+                    <a th:href="@{/shop/mobilePhoneList}" class="nav-item nav-link">MobilePhone</a>
 
                 </div>
+            </nav>
         </div>
-        </nav>
-    </div>
-    <div class="col-lg-12">
-        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-            <a href="" class="text-decoration-none d-block d-lg-none">
-                <h1 class="m-0 display-5 font-weight-semi-bold">
+        <div class="col-lg-12">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                <a href="" class="text-decoration-none d-block d-lg-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold">
               <span class="text-primary font-weight-bold border px-3 mr-1"
               >E</span
               >Shopper
-                </h1>
-            </a>
-            <button
-                    type="button"
-                    class="navbar-toggler"
-                    data-toggle="collapse"
-                    data-target="#navbarCollapse"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0">
-                    <a
-                            th:href="@{/home}"
-                            class="nav-item nav-link"
-                            th:classappend="${page == 'home'} ? 'active' : ''"
-                    >Home</a
-                    >
-                    <a
-                            th:href="@{/shop/all}"
-                            class="nav-item nav-link"
-                            th:classappend="${page == 'Shop'} ? 'active' : ''"
-                    >Shop</a
-                    >
-                    <a
-                            th:href="@{/shop/detail/1}"
-                            class="nav-item nav-link"
-                            th:classappend="${page == 'Shop Detail'} ? 'active' : ''"
-                    >Shop Detail</a
-                    >
-                    <div class="nav-item dropdown">
+                    </h1>
+                </a>
+                <button
+                        type="button"
+                        class="navbar-toggler"
+                        data-toggle="collapse"
+                        data-target="#navbarCollapse"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
                         <a
-                                href="#"
-                                class="nav-link dropdown-toggle"
-                                data-toggle="dropdown"
-                        >Pages</a
+                                th:href="@{/home}"
+                                class="nav-item nav-link"
+                                th:classappend="${page == 'home'} ? 'active' : ''"
+                        >Home</a
                         >
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a th:href="@{/cart}" class="dropdown-item">Shopping Cart</a>
-                            <a th:href="@{/bills}" class="dropdown-item">Bills</a>
+                        <a
+                                th:href="@{/shop/all}"
+                                class="nav-item nav-link"
+                                th:classappend="${page == 'Shop'} ? 'active' : ''"
+                        >Shop</a
+                        >
+                        <div class="nav-item dropdown">
+                            <a
+                                    href="#"
+                                    class="nav-link dropdown-toggle"
+                                    data-toggle="dropdown"
+                            >Pages</a
+                            >
+                            <div class="dropdown-menu rounded-0 m-0">
+                                <a th:href="@{/cart}" class="dropdown-item">Shopping Cart</a>
+                                <a th:href="@{/bills}" class="dropdown-item">Bills</a>
+                            </div>
                         </div>
                     </div>
+                    <div class="navbar-nav ml-auto py-0" th:if="${session.fullname == null}">
+                        <a th:href="@{/login-page}" class="nav-item nav-link">Login</a>
+                        <a th:href="@{/register}" class="nav-item nav-link">Register</a>
+                    </div>
+                    <div class="navbar-nav ml-auto py-0" th:if="${session.fullname != null}">
+                        <a href="#" class="nav-item nav-link" th:text="${'Hello ' + session.fullname}"></a>
+                        <a th:href="@{/logout}" class="nav-item nav-link">Logout</a>
+                    </div>
                 </div>
-                <div class="navbar-nav ml-auto py-0" th:if="${session.fullname == null}">
-                    <a th:href="@{/login-page}" class="nav-item nav-link">Login</a>
-                    <a th:href="@{/register}" class="nav-item nav-link">Register</a>
-                </div>
-                <div class="navbar-nav ml-auto py-0" th:if="${session.fullname != null}">
-                    <a href="#" class="nav-item nav-link" th:text="${'Hello ' + session.fullname}"></a>
-                    <a th:href="@{/logout}" class="nav-item nav-link">Logout</a>
-                </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </div>
-</div>
 </div>
 <!-- Navbar End -->
 

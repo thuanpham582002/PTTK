@@ -7,23 +7,23 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.thuan.pttk.entity.User;
+import org.springframework.stereotype.Service;
 
-public class UserDetailsServiceCustom implements UserDetailsService{
+@Service
+public class UserDetailsServiceCustom implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username).get();
-        if(user == null){
+        if (user == null) {
             var exception = new UsernameNotFoundException("Username not found");
             exception.printStackTrace();
             throw exception;
-        }else{
+        } else {
             UserDetailsCustom userDetailsCusom = new UserDetailsCustom(user);
             return userDetailsCusom;
         }
     }
-    
-    
 }

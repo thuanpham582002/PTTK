@@ -1,11 +1,9 @@
 package com.thuan.pttk.repository;
 
+import com.thuan.pttk.entity.mobile.Brand;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.thuan.pttk.entity.shoes.Shoes;
-
 @Repository
-public interface ShoesRepository extends JpaRepository<Shoes, Long>  {
-    
+public interface BrandRepository extends JpaRepository<Brand, Long> {
 }

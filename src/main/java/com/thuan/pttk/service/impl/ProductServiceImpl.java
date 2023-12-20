@@ -31,18 +31,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllElectronicProduct() {
-        return productRepository.findAllElectronicProduct();
+    public List<Product> getAllMobilePhoneProduct() {
+        return productRepository.findAllMobilePhoneProduct();
     }
 
     @Override
     public List<Product> getAllClothesProduct() {
         return productRepository.findAllClothesProduct();
     }
-
-    @Override
-    public List<Product> getAllShoesProduct() {
-        return productRepository.findAllShoesProduct();
-    }
-
 }
